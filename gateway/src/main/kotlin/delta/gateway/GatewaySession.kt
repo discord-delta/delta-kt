@@ -2,5 +2,5 @@ package delta.gateway
 
 class GatewaySession {
 
-    private var connection: GatewayConnection = GatewayConnection()
+//    private var connection: GatewayConnection = GatewayConnection()
 }
