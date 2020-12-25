@@ -5,6 +5,7 @@ plugins {
 dependencies {
     api(project(":common"))
     api(project(":request"))
+    api(project(":entity"))
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")

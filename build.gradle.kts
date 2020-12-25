@@ -21,10 +21,6 @@ allprojects {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2")
     }
 
-    tasks.test {
-        useJUnit()
-    }
-
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "11"
     }
