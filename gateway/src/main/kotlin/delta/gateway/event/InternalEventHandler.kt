@@ -19,7 +19,10 @@ internal fun GatewaySession.initializeListeners() {
     // Event processor
     events.filterIsInstance<RawGatewayEvent>().onEach {
         // Update sequence #
-        if (it.sequence != null && it.sequence > it.session.sequence) it.session.sequence = it.sequence
+        if (it.sequence != null && it.sequence > it.session.sequence ?: -1) {
+            println("Sequence: ${it.session.sequence}")
+            it.session.sequence = it.sequence
+        }
 
         try {
             val event = when (it.opcode) {

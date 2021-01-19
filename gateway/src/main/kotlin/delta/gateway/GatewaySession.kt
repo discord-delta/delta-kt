@@ -4,6 +4,7 @@ import delta.common.AtomicReference
 import delta.gateway.event.GatewayEvent
 import delta.gateway.event.RawGatewayEvent
 import delta.gateway.event.initializeListeners
+import io.ktor.client.*
 import io.ktor.client.features.websocket.*
 import io.ktor.http.cio.websocket.*
 import kotlinx.coroutines.*
@@ -34,7 +35,7 @@ open class GatewaySession(private val socket: DefaultClientWebSocketSession) {
     /**
      * The current event sequence number from Discord used for resuming.
      */
-    var sequence: Int by AtomicReference(0)
+    var sequence: Int? by AtomicReference(null)
         internal set
 
     /**
@@ -126,7 +127,7 @@ enum class GatewayStatus(val isOpen: Boolean) {
     /**
      * The session is waiting to be connected.
      */
-    PENDING_CONNECTION(false),
+    PENDING_CONNECTION(true),
 
     /**
      * The session is open, but has not received any events.

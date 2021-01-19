@@ -13,7 +13,7 @@ sealed class GatewayCommand(val op: Int) {
      * Represents an outgoing heartbeat command.
      */
     @Serializable
-    class HeartbeatCommand(@SerialName("d") val sequence: Int) : GatewayCommand(1)
+    class HeartbeatCommand(@SerialName("d") val sequence: Int?) : GatewayCommand(1)
 
     /**
      * Represents an outgoing identify command.

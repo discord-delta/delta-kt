@@ -52,6 +52,6 @@ suspend fun GatewaySession.resume(token: String, sessionId: String, sequence: In
  *
  * @param sequence The last received sequence number.
  */
-suspend fun GatewaySession.heartbeat(sequence: Int) {
+suspend fun GatewaySession.heartbeat(sequence: Int?) {
     send(HeartbeatCommand(sequence))
 }

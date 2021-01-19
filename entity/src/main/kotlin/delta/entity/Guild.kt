@@ -3,12 +3,10 @@ package delta.entity
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.descriptors.PrimitiveKind
 import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
-import kotlinx.serialization.json.Json
 
 @Serializable
 data class UnavailableGuildData(
@@ -307,52 +305,4 @@ sealed class MfaLevel(val id: Int) {
     }
 
 
-}
-
-fun main() {
-    val guild = Json { ignoreUnknownKeys = true }.decodeFromString<GuildData>("""
-        {
-            "id": "180793115223916544",
-            "name": "DiamondFire",
-            "icon": "02c3e56acb88125392ab9292548e17fc",
-            "description": null,
-            "splash": "4574d48fb4c93b623933131943c3c57a",
-            "discovery_splash": null,
-            "features": [
-                "COMMUNITY",
-                "VANITY_URL",
-                "WELCOME_SCREEN_ENABLED",
-                "NEWS",
-                "INVITE_SPLASH",
-                "BANNER",
-                "PREVIEW_ENABLED",
-                "MEMBER_VERIFICATION_GATE_ENABLED",
-                "ANIMATED_ICON"
-            ],
-            "banner": "8249f6edfed8ae4906e010e38b123c1f",
-            "owner_id": "180506843796209664",
-            "application_id": null,
-            "region": "us-central",
-            "afk_channel_id": "387844915599638538",
-            "afk_timeout": 3600,
-            "system_channel_id": "384242195567476738",
-            "widget_enabled": true,
-            "widget_channel_id": "180793115223916544",
-            "verification_level": 2,
-            "default_message_notifications": 1,
-            "mfa_level": 1,
-            "explicit_content_filter": 2,
-            "max_presences": null,
-            "max_members": 100000,
-            "max_video_channel_users": 25,
-            "vanity_url_code": "diamondfire",
-            "premium_tier": 3,
-            "premium_subscription_count": 30,
-            "system_channel_flags": 0,
-            "preferred_locale": "en-US",
-            "rules_channel_id": "337376406227124235",
-            "public_updates_channel_id": "306944276145897474"
-        }
-    """.trimIndent())
-    println(guild)
 }
